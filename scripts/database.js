@@ -96,7 +96,7 @@ export const getInterior = () => {
     return database.interior.map(fabric => ({...fabric}))
 }
 export const getTechnology = () => {
-    return database.technology.map(package => ({...package}))
+    return database.technology.map(tech => ({...tech}))
 }
 export const getWheels = () => {
     return database.wheels.map(wheel => ({...wheel}))
