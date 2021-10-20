@@ -1,9 +1,14 @@
-import { getInterior, getPaintColors, getTechnology, getWheels } from "./database.js";
-getInterior
-getTechnology
-getWheels
-getPaintColors
+import { cars_r_us } from "./cars-r-us.js";
 
-import { Paint } from "./specs/paintColor.js";
+const mainContainer = document.querySelector("#main-container")
 
-Paint()
+const renderAllHTML = () => {
+mainContainer.innerHTML = cars_r_us()
+}
+
+renderAllHTML()
+
+document.addEventListener("stateChanged", event => {
+    console.log("State of data has changed. Regenerating HTML...")
+    renderAllHTML()
+})
