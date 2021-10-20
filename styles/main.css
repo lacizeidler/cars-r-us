@@ -1,0 +1,22 @@
+.choices {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choices__colors, .choices__interior, .choices__technology, .choices__wheels{
+    border: 10px solid rgb(176, 176, 176);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 1%;
+    width: 20%;
+}
+
+.button {
+    text-align: center;
+}
+
+#orderButton {
+    padding: 1% 2%;
+    font-size: 20px;
+}
+

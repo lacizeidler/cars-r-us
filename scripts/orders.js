@@ -1,10 +1,44 @@
-import { getOrders } from "./database.js"
+import { getOrders, getInterior, getPaintColors, getWheels, getTechnology } from "./database.js"
 
 const buildOrderListItem = (order) => {
+    const interiors = getInterior()
+    const paintColors = getPaintColors()
+    const wheels = getWheels()
+    const technologies = getTechnology()
+
+    // Remember that the function you pass to find() must return true/false
+    const foundInterior = interiors.find(
+        (interior) => {
+            return interior.id === order.interiorId
+        }
+    )
+    const foundPaintColors= paintColors.find(
+        (paint) => {
+            return paint.id === order.colorId
+        }
+    )
+    const foundWheels = wheels.find(
+        (wheel) => {
+            return wheel.id === order.wheelId
+        }
+    )
+    const foundTechnologies = technologies.find(
+        (tech) => {
+            return tech.id === order.technologyId
+        }
+    )
+    const totalCost = foundInterior.price + foundPaintColors.price + foundWheels.price + foundTechnologies.price
+    
+    const costString = totalCost.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+    })
+
     return `<li>
-        Order #${order.id} was placed on ${order.timestamp}
-    </li>`
+    Order #${order.id} cost ${costString}
+</li>`
 }
+
 export const Orders = () => {
     /*
         Can you explain why the state variable has to be inside
